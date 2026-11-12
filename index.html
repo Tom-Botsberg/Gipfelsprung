@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c34">
+  <meta name="gipfelsprung-mode" content="local">
+  <meta name="description" content="Gipfelsprung – ein eigenständiges Schweizer Jump-and-Run mit fünf Welten. Lokal, ohne Anmeldung und ohne Downloads spielbar.">
+  <title>Gipfelsprung — Ein Schweizer Abenteuer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23df573a'/%3E%3Cpath d='M26 13h12v13h13v12H38v13H26V38H13V26h13z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="js/logic.js"></script>
+  <script defer src="js/art.js"></script>
+  <script defer src="js/game.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Gipfelsprung Startseite"><span class="swiss-mark" aria-hidden="true">✚</span> GIPFELSPRUNG<span class="brand-dot">.</span></a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#reise" class="menu-link">Die Reise</a>
+      <a href="#bestenliste">Top Scorer</a>
+      <a href="#steuerung">So spielst du</a>
+      <button class="sound-button" id="sound-button" type="button" aria-pressed="false" title="Ton ein- oder ausschalten"><span id="sound-icon" aria-hidden="true">♫</span><span id="sound-label">Ton an</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="menu-screen" aria-labelledby="main-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span> DEIN SCHWEIZER JUMP-AND-RUN</div>
+          <h1 id="main-title">Kleine Sprünge.<br>Grosse <span>Abenteuer.</span></h1>
+          <p>Von den Gassen St. Gallens bis hoch in die Alpen.<br class="desktop-break"> Fünf Welten, jede Menge Münzen und du mittendrin.</p>
+          <a class="text-link" href="#abenteurer">Wähle deine Figur und spring los <span aria-hidden="true">↘</span></a>
+          <div class="hero-details"><span><i></i> 5 Schweizer Welten</span><span><i></i> 3 Leben. Ein Abenteuer.</span></div>
+        </div>
+        <div class="hero-art">
+          <canvas id="preview-canvas" width="800" height="460" aria-label="Pixel-Landschaft mit Schweizer Bergen, St. Galler Kloster und einer Abenteurerin"></canvas>
+          <span class="postcard-stamp">GRÜEZI<br><strong>SCHWEIZ!</strong><span>↗ 2'502 m ü. M.</span></span>
+          <div class="postcard-caption"><span class="location-dot"></span><span>Erster Halt: <strong>St. Gallen</strong></span><span class="postcard-number">01 / 05</span></div>
+        </div>
+      </div>
+
+      <section id="abenteurer" class="character-section" aria-labelledby="character-title">
+        <div class="section-heading"><div><span class="eyebrow">DEIN ABENTEUER BEGINNT HIER</span><h2 id="character-title">Wer springt für dich?</h2></div><p>Name eingeben. Figur anklicken. Los geht’s.</p></div>
+        <div class="player-name-field"><label for="player-name">Dein Spielername</label><input id="player-name" name="nickname" type="text" autocomplete="nickname" maxlength="24" required placeholder="Wie heisst du?" aria-describedby="player-name-hint"><span id="player-name-hint">Unter diesem Namen erscheint dein Münzrekord in der Bestenliste.</span></div>
+        <div class="character-grid">
+          <button class="character-card" data-skin="0" type="button"><div class="character-portrait portrait-lina"><canvas width="150" height="124" data-portrait="0" aria-hidden="true"></canvas><span class="character-number">01</span></div><div class="character-info"><div><strong>Lina</strong><span>Wanderhut, Zopf & Rucksack.</span></div><span class="card-arrow" aria-hidden="true">↗</span></div><span class="sr-only">Mit Lina in St. Gallen starten</span></button>
+          <button class="character-card" data-skin="1" type="button"><div class="character-portrait portrait-noah"><canvas width="150" height="124" data-portrait="1" aria-hidden="true"></canvas><span class="character-number">02</span></div><div class="character-info"><div><strong>Noah</strong><span>Hoodie & Kopfhörer.</span></div><span class="card-arrow" aria-hidden="true">↗</span></div><span class="sr-only">Mit Noah in St. Gallen starten</span></button>
+          <button class="character-card" data-skin="2" type="button"><div class="character-portrait portrait-mika"><canvas width="150" height="124" data-portrait="2" aria-hidden="true"></canvas><span class="character-number">03</span></div><div class="character-info"><div><strong>Mika</strong><span>Mütze, Bergbrille & Schal.</span></div><span class="card-arrow" aria-hidden="true">↗</span></div><span class="sr-only">Mit Mika in St. Gallen starten</span></button>
+          <button class="character-card" data-skin="3" type="button"><div class="character-portrait portrait-maurin"><canvas width="150" height="124" data-portrait="3" aria-hidden="true"></canvas><span class="character-number">04</span></div><div class="character-info"><div><strong>Maurin</strong><span>Sporttrikot & Stirnband.</span></div><span class="card-arrow" aria-hidden="true">↗</span></div><span class="sr-only">Mit Maurin in St. Gallen starten</span></button>
+          <button class="character-card" data-skin="4" type="button"><div class="character-portrait portrait-nici"><canvas width="150" height="124" data-portrait="4" aria-hidden="true"></canvas><span class="character-number">05</span></div><div class="character-info"><div><strong>Nici</strong><span>Pferdeschwanz & Umhängetasche.</span></div><span class="card-arrow" aria-hidden="true">↗</span></div><span class="sr-only">Mit Nici in St. Gallen starten</span></button>
+        </div>
+        <p class="character-note">Dein Look, deine Wahl. Alle Figuren springen gleich weit.</p>
+      </section>
+
+      <section class="journey" id="reise" aria-labelledby="journey-title">
+        <div class="section-heading"><div><span class="eyebrow">VOM KLOSTER BIS ZUM GIPFEL</span><h2 id="journey-title">Ein Land. Fünf Welten.</h2></div><span class="difficulty-label">MIT JEDEM LEVEL EIN STÜCK HÖHER ↗</span></div>
+        <ol class="route-list">
+          <li><span class="route-index">01</span><span class="route-icon" aria-hidden="true">♜</span><strong>St. Gallen</strong><span>Gassen & Klostertürme</span><span class="route-tag">DER ANFANG</span></li>
+          <li><span class="route-index">02</span><span class="route-icon" aria-hidden="true">⌁</span><strong>Zürich</strong><span>Über Dächer & die Limmat</span></li>
+          <li><span class="route-index">03</span><span class="route-icon" aria-hidden="true">◷</span><strong>Bern</strong><span>Lauben & Zytglogge</span></li>
+          <li><span class="route-index">04</span><span class="route-icon" aria-hidden="true">≋</span><strong>Luzern</strong><span>Brücken & Seeufer</span></li>
+          <li><span class="route-index">05</span><span class="route-icon" aria-hidden="true">△</span><strong>Alpen</strong><span>Der Nebelwächter wartet</span><span class="route-tag boss-tag">BOSS-LEVEL</span></li>
+        </ol>
+      </section>
+    </section>
+
+    <section id="play-screen" class="play-screen" aria-label="Spiel" hidden>
+      <div class="game-topline"><div><span id="level-number" class="eyebrow">WELT 01 / 05</span><h1 id="level-name">St. Gallen</h1></div><div class="game-actions"><button type="button" id="pause-button" class="outline-button">Ⅱ Pause</button><button type="button" id="menu-button" class="outline-button">Figur wechseln</button></div></div>
+      <div class="game-hud">
+        <div class="hud-item"><span class="hud-label">DEINE LEBEN</span><span id="lives" class="hearts" aria-label="3 von 3 Leben">♥ ♥ ♥</span></div>
+        <div class="hud-item coin-hud"><span class="hud-label">MÜNZEN</span><span><span class="coin-symbol" aria-hidden="true">●</span> <strong id="coin-count">0</strong><span class="coin-next" id="coin-next"> / 10 bis zur Waffe</span></span></div>
+        <div class="hud-item ammo-hud"><span class="hud-label">MUNITION</span><strong id="ammo-count" aria-live="polite">20 / 20</strong></div>
+        <div class="hud-item bomb-hud"><span class="hud-label">BOMBEN <kbd>B</kbd></span><strong id="bomb-count" aria-live="polite">0</strong></div>
+        <div class="hud-item weapon-hud"><span class="hud-label">AKTUELLE WAFFE <kbd>Q</kbd></span><strong id="weapon-name">Schneeball</strong></div>
+        <div class="hud-item progress-hud"><span class="hud-label">DEIN WEG ZUM ZIEL</span><progress id="level-progress" max="100" value="0" aria-label="Fortschritt im Level"></progress></div>
+      </div>
+      <div class="game-stage" id="game-stage">
+        <canvas id="game-canvas" width="1280" height="640" tabindex="0" aria-label="Jump-and-Run. A und D oder Pfeiltasten zum Laufen, Leertaste zum Springen, F zum Schiessen, B für eine Bombe, Q zum Waffenwechsel, Escape für Pause."></canvas>
+        <div id="boss-hud" class="boss-hud" hidden><span>DER NEBELWÄCHTER</span><progress id="boss-health" max="60" value="60" aria-label="Leben des Endgegners"></progress></div>
+        <div id="toast" class="toast" role="status" hidden></div>
+        <div id="game-overlay" class="game-overlay" hidden>
+          <div class="overlay-content">
+            <p id="overlay-eyebrow" class="eyebrow"></p>
+            <h2 id="overlay-title"></h2>
+            <p id="overlay-text"></p>
+            <p id="overlay-score-status" class="overlay-score-status" role="status" hidden></p>
+            <button id="overlay-retry-score" class="outline-button" type="button" hidden>Ergebnis erneut speichern</button>
+            <div class="overlay-actions"><button id="overlay-primary" type="button" class="primary-button" hidden>Weiter</button><button id="overlay-secondary" type="button" class="secondary-button" hidden>Figur wechseln</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="game-footnote"><span><span class="status-dot"></span> <span id="level-hint">Spring auf Gegner, um sie zu besiegen. Die Flagge ist dein Ziel.</span></span><span id="player-label">LINA · ABENTEUER 01</span></div>
+    </section>
+
+    <section id="bestenliste" class="leaderboard-section" aria-labelledby="leaderboard-title">
+      <div class="section-heading"><div><span class="eyebrow">WER SAMMELT AM MEISTEN?</span><h2 id="leaderboard-title">Die Münz-Champions.</h2></div><button id="refresh-scores" type="button" class="outline-button">Liste aktualisieren</button></div>
+      <p class="leaderboard-description">Die Top 10 nach gesammelten Münzen. Gemeinsam für alle Browser auf diesem Spielserver.</p>
+      <p id="leaderboard-status" role="status">Bestenliste wird geladen …</p>
+      <p id="leaderboard-empty" hidden>Noch keine Rekorde. Dein nächstes Abenteuer könnte der erste sein!</p>
+      <div id="leaderboard-table-wrap" class="leaderboard-table-wrap" hidden><table class="leaderboard-table"><caption class="sr-only">Die zehn besten abgeschlossenen Spielversuche nach Münzen</caption><thead><tr><th scope="col">Rang</th><th scope="col">Spieler</th><th scope="col">Münzen</th><th scope="col">Ergebnis</th></tr></thead><tbody id="leaderboard-rows"></tbody></table></div>
+      <div class="score-save-feedback"><p id="score-save-status" role="status">Dein Ergebnis wird nach Game-over oder Gipfelsieg gespeichert.</p><button id="retry-scores" class="outline-button" type="button" hidden>Speichern erneut versuchen</button></div>
+    </section>
+
+    <section id="steuerung" class="controls-section" aria-labelledby="controls-title">
+      <div><span class="eyebrow">KLEINE TASTENKUNDE</span><h2 id="controls-title">Leicht zu lernen.<br>Hoch hinaus.</h2></div>
+      <div class="control-list">
+        <div><span class="key-group"><kbd>←</kbd><kbd>→</kbd><span>oder</span><kbd>A</kbd><kbd>D</kbd></span><strong>Laufen</strong></div>
+        <div><span class="key-group"><kbd class="wide-key">Leertaste</kbd><span>oder</span><kbd>↑</kbd></span><strong>Springen</strong></div>
+        <div><span class="key-group"><kbd>F</kbd><span>halten</span></span><strong>Schiessen</strong></div>
+        <div><span class="key-group"><kbd>B</kbd><span>einmal drücken</span></span><strong>Gesammelte Bombe werfen</strong></div>
+        <div><span class="key-group"><kbd>Q</kbd><span>/</span><kbd>Esc</kbd></span><strong>Waffe wechseln / Pause</strong></div>
+      </div>
+      <div class="tip-card"><span class="coin-symbol" aria-hidden="true">●</span><strong>Kleingeld. Grosse Wirkung.</strong><p>Starte mit Schneebällen und 20 Schüssen. Beim Bosskampf wird auf 35 aufgefüllt. Grüne Pakete geben +10 Munition. Seltene goldene Bomben wirfst du mit B. Alle 10 Münzen eine neue Waffe. Jede geschaffte Welt gibt +1 Herz, maximal drei.</p></div>
+    </section>
+    <div id="notice" class="notice" role="status" hidden></div>
+  </main>
+  <footer><span class="footer-brand">GIPFELSPRUNG.</span><span>Mit ♥ für die Schweiz. Mit Pfeiltasten für dich.</span><span>LOKAL. WERBEFREI. EIGENSTÄNDIG.</span></footer>
+</body>
+</html>
