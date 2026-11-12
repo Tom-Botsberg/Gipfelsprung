@@ -31,15 +31,16 @@ ist erforderlich. Ton beginnt erst nach einer Benutzeraktion.
 
 ## GitHub und Online-Version
 
-Das vorgesehene Repository ist `Tom-Botsberg/Gipfelsprung` und soll **privat**
-bleiben. Persönliche Rekorde (`data/`), kompilierte Serverprogramme (`bin/`)
+Das Repository [`Tom-Botsberg/Gipfelsprung`](https://github.com/Tom-Botsberg/Gipfelsprung)
+ist **öffentlich**. Persönliche Rekorde (`data/`), kompilierte Serverprogramme (`bin/`)
 und erzeugte Pages-Dateien (`_site/`) werden nicht versioniert.
 
-GitHub Pages benötigt für private Repositorys einen passenden GitHub-Tarif.
-Keine Tarifänderung ist nötig oder automatisch vorgesehen. Die Pages-Spielseite
-ist normalerweise **öffentlich**, auch wenn das Repository privat ist.
+GitHub Pages kann für dieses öffentliche Repository ohne Tarifwechsel genutzt
+werden. Die Spielseite und der Quellcode sind öffentlich zugänglich.
 
-Wenn der bestehende Tarif Pages unterstützt:
+Online-Adresse: [Gipfelsprung spielen](https://tom-botsberg.github.io/Gipfelsprung/).
+
+Veröffentlichung oder Aktualisierung:
 
 1. Im Repository unter **Settings → Pages → Build and deployment → Source**
    **GitHub Actions** auswählen.
